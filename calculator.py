@@ -69,27 +69,22 @@ def main():
         num1 = get_number("Enter first number: ")
         num2 = get_number("Enter second number: ")
         
+        # Map choices to operations and symbols
+        operations = {
+            '1': (add, '+'),
+            '2': (subtract, '-'),
+            '3': (multiply, '*'),
+            '4': (divide, '/')
+        }
+        
         # Perform calculation based on choice
         try:
-            if choice == '1':
-                result = add(num1, num2)
-                operation = "+"
-            elif choice == '2':
-                result = subtract(num1, num2)
-                operation = "-"
-            elif choice == '3':
-                result = multiply(num1, num2)
-                operation = "*"
-            elif choice == '4':
-                result = divide(num1, num2)
-                operation = "/"
-            
+            func, operation = operations[choice]
+            result = func(num1, num2)
             print(f"\nResult: {num1} {operation} {num2} = {result}")
         
         except ValueError as e:
             print(f"\nError: {e}")
-        except Exception as e:
-            print(f"\nAn unexpected error occurred: {e}")
 
 
 if __name__ == "__main__":
